@@ -146,8 +146,8 @@ if [[ "$install_neofetch" == "y" || "$install_neofetch" == "Y" ]]; then
     load_neofetch_config=${load_neofetch_config:-y}
     
     if [[ "$load_neofetch_config" == "y" || "$load_neofetch_config" == "Y" ]]; then
-        wget -O ~/.config/neofetch/config.conf link
-        wget -O ~/.config/neofetch/logo link
+        wget -O ~/.config/neofetch/config.conf https://raw.githubusercontent.com/kr0sh512/ubuntu-config/refs/heads/main/neofetch/config.conf
+        wget -O ~/.config/neofetch/logo https://raw.githubusercontent.com/kr0sh512/ubuntu-config/refs/heads/main/neofetch/logo
         echo -e "${GREEN_COLOR}neofetch config has been loaded successfully.${NO_COLOR}"
     fi
 
