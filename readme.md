@@ -1,5 +1,7 @@
 # Ubuntu Configuration Script
 
+# It is in the production stage.
+
 This repository contains a script to automate the installation and configuration of various software packages on an Ubuntu system.
 
 ## Features

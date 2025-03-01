@@ -41,6 +41,7 @@ else
     echo "Skipping Git installation."
 fi
 
+echo -e "${CYAN_COLOR}After install zsh, enter Ctrl+D to continue install!${NO_COLOR}"
 read -p "Do you want to install zsh and ohmyzsh? (Y/n): " install_ohmyzsh
 install_ohmyzsh=${install_ohmyzsh:-y}
 
@@ -92,6 +93,7 @@ if [[ "$install_eza" == "y" || "$install_eza" == "Y" ]]; then
     sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
     sudo apt update
     sudo apt install -y eza
+    echo "alias ls=eza" >> ~/.zshrc
     echo -e "${GREEN_COLOR}eza has been installed successfully.${NO_COLOR}"
 else
     echo "Skipping eza installation."
@@ -139,13 +141,14 @@ if [[ "$install_neofetch" == "y" || "$install_neofetch" == "Y" ]]; then
     figlet_text=${figlet_text:-$(whoami)}
 
     echo "figlet -c ${figlet_text} | xargs -0 printf '\033[0;31m%s'" >> ~/.zshrc
-    echo "printf '\n'" >> ~/.zshrc
+    echo "printf '\\n'" >> ~/.zshrc
     echo "neofetch" >> ~/.zshrc
 
-    read -p "Do you want load custom neofetch config?: " load_neofetch_config
+    read -p "Do you want load custom neofetch config? (Y/n): " load_neofetch_config
     load_neofetch_config=${load_neofetch_config:-y}
     
     if [[ "$load_neofetch_config" == "y" || "$load_neofetch_config" == "Y" ]]; then
+        mkdir -p ~/.config/neofetch
         wget -O ~/.config/neofetch/config.conf https://raw.githubusercontent.com/kr0sh512/ubuntu-config/refs/heads/main/neofetch/config.conf
         wget -O ~/.config/neofetch/logo https://raw.githubusercontent.com/kr0sh512/ubuntu-config/refs/heads/main/neofetch/logo
         echo -e "${GREEN_COLOR}neofetch config has been loaded successfully.${NO_COLOR}"
